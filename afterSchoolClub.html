@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src = "https://unpkg.com/vue"></script>
+</head>
+<body>
+    
+    
+    
+    <div id="app">
+        <h1> {{title}} </h1>
+        <img width=100px; style="float: left; padding-right: 20px;" v-bind:src="image">
+        <p><b> {{location}} </b></b></p>
+        <p><b> {{price}} </b></b></p>
+        <p> <b>{{numberOfSpaces}} {{counter}} </b> </p>
+        </br> 
+        <p><button v-on:click="addToCart">Add to Cart</button></p>
+     
+    </div>
+    
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                counter: 5,
+                image: './calculate+calculation+calculator+general+math+office-1320183160073420774.png',
+                mathIcon:"",
+                title: "After School Club",
+                location: "London",
+                price: "Price: 100",
+                numberOfSpaces:"Number of spaces: " ,
+                
+                 
+            },
+            methods: {
+
+                addToCart() {
+                    if(this.counter > 0){
+                        this.counter--;
+
+                    }
+                    
+                
+
+
+             }}
+            
+        })
+        
+    </script>
+</body>
+</html>

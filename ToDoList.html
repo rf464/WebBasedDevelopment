@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo App</title>
+</head>
+
+<body>
+    <h1>My ToDo List</h1>
+    <input type="text" name="" id="task">
+    <button id="addButton" onclick="addToList()">Add</button>
+    <ul id="list"></ul>
+
+    <script>
+        let myArray = ["Task 1", "Task 2", "Task 3"];
+        let tasks = " ";
+
+        //puts every element from the array in the "task" variable as an item in a list
+        for (let i = 0; i < myArray.length; i++) {
+            tasks += '<li>' + myArray[i] + '</li>';
+
+        }
+        document.getElementById("list").innerHTML = tasks; //displays the items in the "Tasks" variable
+        tasks = ""; //the tasks variable gets cleared
+
+        // adds the input from the text field "task" into the array
+        function addToList() {
+            let newTask = document.getElementById("task").value;
+            myArray.push(newTask);
+            for (let i = 0; i < myArray.length; i++) {
+                tasks += '<li>' + myArray[i] + '</li>';
+
+            }
+            document.getElementById("task").value = "";
+            document.getElementById("list").innerHTML = tasks;
+            tasks = "";
+            console.log(myArray);
+        }
+
+
+    </script>
+</body>
+
+</html>

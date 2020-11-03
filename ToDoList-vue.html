@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo App - Vue.js version</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>My ToDo List</h1>
+        <input v-model='task'>
+        <button v-on:click='addItem'>Add</button>
+        <ul id="list"></ul>
+    </div>
+
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                task: '',
+            },
+            methods: {
+                addItem () {
+                    console.log(this.task);
+                    let item = document.createElement('li');
+                    item.innerText = this.task;
+                    let list = document.getElementById('list');
+                    list.appendChild(item);
+                    this.task = '';
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
