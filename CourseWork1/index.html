@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>After School Club</title>
+    <script src="https://unpkg.com/vue"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <!--font awesome library-->
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- bootstrap 4 librabry-->
+
+    <!-- bootstrap 3 librabry-->
+</head>
+
+<body>
+    
+
+
+    <!-- Displaying information on the page -->
+    <div id="app">
+        <header>
+
+        
+        
+        </header>
+        <div class="container1" >
+            <!-- -->
+           
+            
+            <div class="col-12 "  >
+                
+                <button class="float-right btn btn-dark"  @click="showCheckout"> {{ cartItemCount }} <span
+                    class="fas fa-cart-arrow-down"> </span> Checkout </button>
+                    <!--displaying the checkout button-->
+                    
+                    
+                    <h1 class="text-center" > {{title}} </h1>
+                </div>
+            <!--title of the page-->
+
+            <div id="firstObject" class="row1 product" v-if="showProduct">
+                <!--the div displaying the first object-->
+                <div class="col1">
+                    <!--the image of the lesson-->
+                    <img v-bind:src="lesson.image">
+                </div>
+                <div class=" col-expand">
+                    <!-- the information of the lesson -->
+
+                    <h2><b> {{lesson.subject}} </b></b></h2>
+                    <p><b> {{lesson.location}} </b></b></p>
+                    <p><b> {{lesson.price}} </b></b></p>
+                    <p> <b> Number of Spaces {{lesson.spacesLeft}} </b> </p>
+                    <!--add to cart button-->
+                    <button id="addButton" class="btn btn-dark" v-on:click="addToCart" v-if="canAddToCart">Add to
+                        Cart</button>
+                    <button id="addButton" disabled class="btn btn-dark" v-else>Add to Cart</button>
+
+                    </br>
+                </div>
+                </br>
+                </br>
+            </div>
+            <!------------------------------    Checkout Page  ------------------->
+            <div class="row1 product  " v-else>
+                <div class="col-md-5">
+                    <strong>First Name </strong>
+                    <input v-model="order.firstName" class="form-control">
+                </div>
+
+                <div class="col-md-5  ">
+                    <strong>Last Name </strong>
+                    <input v-model="order.lastName" class="form-control">
+                </div>
+
+                <div class="col-md-10">
+                    <strong>Address</strong>
+                    <input v-model="order.address" class=" form-control">
+                </div>
+                <div class="col-md-5">
+                    <strong>City:</strong>
+                    <select v-model="order.city" class="form-control">
+                        <option disabled value="">City</option>
+                        <option>London</option>
+                        <option>Luton</option>
+                        <option>Watford</option>
+                        <option>Birmingham</option>
+                        <option>Liverpool</option>
+                    </select>
+                </div>
+            </br>
+                <div class="col-md-5">
+                    <strong>Zipcode</strong>
+                    <input v-model="order.postcode" class="form-control">
+                </div>
+                
+                
+                <div class="col-md-12 verify">
+                    <pre>
+                        First Name: {{order.firstName}}
+                        Last Name: {{order.lastName}}
+                        Address: {{order.address}}
+                        City: {{order.city}}
+                        postcode: {{order.postcode}}
+                    </pre>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-------------------------- VueJS Code  -------------------->
+
+
+    <script src="CourseWork1.js"></script>
+</body>
+
+</html>
