@@ -1,25 +1,35 @@
+
+
 new Vue({
     el: '#app',
     data: {
         title: "After School Club",
-        showProduct: false,
+        showProduct: true,
         order:{
-            firstName: "",
-            lastName: "",
+            fullName: "",
+            phoneNumber: "",
             address: "",
             city: "",
             postcode:""
         },
+        cities:{
+            London: "London",
+            Luton: "Luton",
+            Watford: "Watford",
+            Birmingham: "Birmingham",
+            Liverpool: "Liverpool"
+        },
         lesson: {
             
             id: 1001,
-            spacesLeft: 5,
+            spacesLeft: 10,
             image: './images/maths.png',
             subject: "Math",
             mathIcon: "",
             location: "London",
             price: "Price: 100",
             numberOfSpaces: "Number of spaces: ",
+            rating: 3
         },
 
         cart: []
@@ -41,6 +51,14 @@ new Vue({
                 this.lesson.spacesLeft--;
                 
              
+        },
+
+        checkRating(n){
+            return this.lesson.rating - n >=0;
+        },
+
+        submitForm(){ //submit button on the checkout form
+           alert("Order Placed");
         }
     },
 

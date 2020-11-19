@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>After School Club</title>
@@ -17,29 +19,26 @@
 </head>
 
 <body>
-    
+
 
 
     <!-- Displaying information on the page -->
     <div id="app">
-        <header>
+        </br>
 
-        
-        
-        </header>
-        <div class="container1" >
+        <div class="container1">
             <!-- -->
-           
-            
-            <div class="col-12 "  >
-                
-                <button class="float-right btn btn-dark"  @click="showCheckout"> {{ cartItemCount }} <span
-                    class="fas fa-cart-arrow-down"> </span> Checkout </button>
-                    <!--displaying the checkout button-->
-                    
-                    
-                    <h1 class="text-center" > {{title}} </h1>
-                </div>
+
+
+            <div class="col-12 ">
+
+                <button class="float-right btn btn-dark" style="width: 130px;" @click="showCheckout">
+                    {{ cartItemCount }} <span class="fas fa-cart-arrow-down"> </span> Checkout </button>
+                <!--displaying the checkout button-->
+
+
+                <h1 class="text-center"> {{title}} </h1>
+            </div>
             <!--title of the page-->
 
             <div id="firstObject" class="row1 product" v-if="showProduct">
@@ -59,6 +58,27 @@
                     <button id="addButton" class="btn btn-dark" v-on:click="addToCart" v-if="canAddToCart">Add to
                         Cart</button>
                     <button id="addButton" disabled class="btn btn-dark" v-else>Add to Cart</button>
+                    <span class="alert alert-light"
+                    v-if="lesson.spacesLeft > 4">
+                        Buy Now!
+                    </span>
+
+                    <span class="alert alert-light"
+                    v-else-if="lesson.spacesLeft > 0">
+                        Only {{lesson.spacesLeft}} left!
+                    </span>
+
+                    <span class="alert alert-light"
+                    v-else="lesson.spacesLeft === 0">
+                        All Out!
+                    </span>
+                    <div class="rating"> <!-- RATING -->
+                        <span  v-for="n in lesson.rating"> ★ </span>
+                        <span v-for="n in 5 - lesson.rating">
+                            ✰
+                        </span>
+                        
+                    </div>
 
                     </br>
                 </div>
@@ -66,43 +86,54 @@
                 </br>
             </div>
             <!------------------------------    Checkout Page  ------------------->
-            <div class="row1 product  " v-else>
-                <div class="col-md-5">
-                    <strong>First Name </strong>
-                    <input v-model="order.firstName" class="form-control">
+            <div class="row1 product" v-else>
+                <div class="col-md-6">
+                    <strong>Full Name </strong>
+                    <input v-model.trim="order.fullName" class="form-control">
                 </div>
 
-                <div class="col-md-5  ">
-                    <strong>Last Name </strong>
-                    <input v-model="order.lastName" class="form-control">
+                <div class="col-md-6  ">
+                    <strong>Phone Number </strong>
+                    <input v-model.number="order.phoneNumber" class="form-control">
                 </div>
 
-                <div class="col-md-10">
+                <div class="col-md-12">
                     <strong>Address</strong>
-                    <input v-model="order.address" class=" form-control">
+                    <input v-model.trim="order.address" class=" form-control">
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-3">
                     <strong>City:</strong>
                     <select v-model="order.city" class="form-control">
                         <option disabled value="">City</option>
-                        <option>London</option>
-                        <option>Luton</option>
-                        <option>Watford</option>
-                        <option>Birmingham</option>
-                        <option>Liverpool</option>
+                        <option v-for="(city,key) in cities" v-bind:value="city">
+                            {{key}}
+                        </option>
+
                     </select>
                 </div>
-            </br>
-                <div class="col-md-5">
-                    <strong>Zipcode</strong>
-                    <input v-model="order.postcode" class="form-control">
+                </br>
+                <div class="col-md-6 offset-3">
+                    <strong>Postcode</strong>
+                    <input v-model.trim="order.postcode" class="form-control">
+
                 </div>
-                
-                
+                </br>
+                </br>
+                </br>
+                </br>
+                </br>
+
+                <div class="offset-5 ">
+                    <button id="addButton" class="btn btn-dark" v-on:click="submitForm" v-if="canAddToCart">Place
+                        Order</button>
+
+                </div>
+
+
                 <div class="col-md-12 verify">
                     <pre>
-                        First Name: {{order.firstName}}
-                        Last Name: {{order.lastName}}
+                        Full Name: {{order.fullName}}
+                        Phone Number: {{order.phoneNumber}}
                         Address: {{order.address}}
                         City: {{order.city}}
                         postcode: {{order.postcode}}
