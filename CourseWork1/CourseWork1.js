@@ -42,17 +42,21 @@ new Vue({
 
     },
 
-
+    
     methods: {
-
+        
         showCheckout() {
             this.showProduct = false;
         },
-
+        
         goBack() {
             this.showProduct = true;
         },
-
+        
+        canAddToCart: function (lesson) {
+            return lesson.spacesLeft != 0;
+        },
+        
         addToCart(lesson) {//function that decrements the counter if it is bigger than 5
 
 
@@ -62,49 +66,34 @@ new Vue({
 
         },
 
-        canAddToCart: function (lesson) {
-            return lesson.spacesLeft != 0;
-        },
-
+        
         placeOrder() {
             alert("Order Submited")
         },
+        
+        
+        // compare() {
+            //     if (this.lessons.length > 0) {
+                //         let lessonsArray = this.lessons.slice(0);
+                //         function compare(a, b) {
+                    //             if (a.title.toLowerCase() < b.title.toLowerCase())
+                    //                 return -1;
+                    //             if (a.title.toLowerCase() > b.title.toLowerCase())
+                    //                 return 1;
+                    //         }
+                    //     }
+                    
+                    
+                    // },
 
-
-        compare() {
-            if (this.lessons.length > 0) {
-                let lessonsArray = this.lessons.slice(0);
-                function compare(a, b) {
-                    if (a.title.toLowerCase() < b.title.toLowerCase())
-                        return -1;
-                    if (a.title.toLowerCase() > b.title.toLowerCase())
-                        return 1;
-                }
-            }
-
-
-        },
-
-
-        computed: {
-            cartItemCount: function () {
-                return this.cart.length || '';
-            },
-        },
-
-        sortedLessons() {
-            if (this.lessons.length > 0) {
-                let lessonsArray = this.lessons.slice(0);
-                function compare(a, b) {
-                    if (a.title.toLowerCase() < b.title.toLowerCase())
-                        return -1;
-                    if (a.title.toLowerCase() > b.title.toLowerCase())
-                        return 1;
-                }
-                return lessonsArray.sort(compare);
-            }
-        }
-    }
-
-    })
-
+    },
+                    computed: {
+                        cartItemCount: function () {
+                            return this.cart.length || '';
+                        },
+                    },
+                    
+                
+                
+            })
+            
