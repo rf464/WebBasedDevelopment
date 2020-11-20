@@ -60,10 +60,14 @@ new Vue({
         addToCart(lesson) {//function that decrements the counter if it is bigger than 5
 
 
-            this.cart.push(lesson.id);
+            this.cart.push(lesson);
             lesson.spacesLeft--;
 
 
+        },
+        removeFromCheckout: function (lesson) {
+            this.cart.pop(lesson);
+            lesson.spacesLeft++;
         },
 
         
