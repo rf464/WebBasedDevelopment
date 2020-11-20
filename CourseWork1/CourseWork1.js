@@ -1,77 +1,110 @@
 
 
 new Vue({
+
     el: '#app',
+
     data: {
+
         title: "After School Club",
         showProduct: true,
-        order:{
+        
+        order: {
             fullName: "",
             phoneNumber: "",
             address: "",
             city: "",
-            postcode:""
+            postcode: ""
         },
-        cities:{
+        cities: {
             London: "London",
             Luton: "Luton",
             Watford: "Watford",
             Birmingham: "Birmingham",
             Liverpool: "Liverpool"
         },
-        lesson: {
-            
-            id: 1001,
-            spacesLeft: 10,
-            image: './images/maths.png',
-            subject: "Math",
-            mathIcon: "",
-            location: "London",
-            price: "Price: 100",
-            numberOfSpaces: "Number of spaces: ",
-            rating: 3
-        },
+
+        lessons: lessons,
+        // lesson: {
+
+        //     id: 1001,
+        //     spacesLeft: 10,
+        //     image: './images/maths.png',
+        //     subject: "Math",
+        //     location: "London",
+        //     price: "Price: 100",
+        //     numberOfSpaces: "Number of spaces: ",
+        //     rating: 3
+        // },
 
         cart: []
-       
+
 
     },
 
 
     methods: {
-        
-        showCheckout(){
-            this.showProduct = this.showProduct ? false : true ;
+
+        showCheckout() {
+            this.showProduct = false;
         },
 
-        addToCart() {//function that decrements the counter if it is bigger than 5
-            
-                console.log("addtocart");
-                this.cart.push(this.lesson.id);
-                this.lesson.spacesLeft--;
-                
-             
+        goBack() {
+            this.showProduct = true;
         },
 
-        checkRating(n){
-            return this.lesson.rating - n >=0;
+        addToCart(lesson) {//function that decrements the counter if it is bigger than 5
+
+
+            this.cart.push(lesson.id);
+            lesson.spacesLeft--;
+
+
         },
 
-        submitForm(){ //submit button on the checkout form
-           alert("Order Placed");
+        canAddToCart: function (lesson) {
+            return lesson.spacesLeft != 0;
+        },
+
+        placeOrder() {
+            alert("Order Submited")
+        },
+
+
+        compare() {
+            if (this.lessons.length > 0) {
+                let lessonsArray = this.lessons.slice(0);
+                function compare(a, b) {
+                    if (a.title.toLowerCase() < b.title.toLowerCase())
+                        return -1;
+                    if (a.title.toLowerCase() > b.title.toLowerCase())
+                        return 1;
+                }
+            }
+
+
+        },
+
+
+        computed: {
+            cartItemCount: function () {
+                return this.cart.length || '';
+            },
+        },
+
+        sortedLessons() {
+            if (this.lessons.length > 0) {
+                let lessonsArray = this.lessons.slice(0);
+                function compare(a, b) {
+                    if (a.title.toLowerCase() < b.title.toLowerCase())
+                        return -1;
+                    if (a.title.toLowerCase() > b.title.toLowerCase())
+                        return 1;
+                }
+                return lessonsArray.sort(compare);
+            }
         }
-    },
+    }
 
-    
-    computed: {
-        cartItemCount: function () {
-            return this.cart.length || '';
-        },
-        canAddToCart: function() {
-            return this.lesson.spacesLeft != 0;
-        }
-
-    },
-    
-})
+    })
 

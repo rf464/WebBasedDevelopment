@@ -1,8 +1,8 @@
-{
-    "lessons": [
+
+    let lessons = [
         {
             "id": 1001,
-            "spacesLeft": 10,
+            "spacesLeft": 5,
             "image": "./images/maths.png",
             "subject": "Math",
             "location": "London",
@@ -12,7 +12,7 @@
         },
         {
             "id": 1002,
-            "spacesLeft": 6,
+            "spacesLeft": 5,
             "image": "./images/english.png",
             "subject": "English",
             "location": "LiverPool",
@@ -22,7 +22,7 @@
         },
         {
             "id": 1003,
-            "spacesLeft": 7,
+            "spacesLeft": 5,
             "image": "./images/french.png",
             "subject": "French",
             "location": "Watford",
@@ -32,7 +32,7 @@
         },
         {
             "id": 1004,
-            "spacesLeft": 10,
+            "spacesLeft": 5,
             "image": "./images/geography.png",
             "subject": "Geogrpahy",
             "location": "Birmingham",
@@ -42,7 +42,7 @@
         },
         {
             "id": 1005,
-            "spacesLeft": 10,
+            "spacesLeft": 5,
             "image": "./images/history.png",
             "subject": "History",
             "location": "London",
@@ -52,7 +52,7 @@
         },
         {
             "id": 1006,
-            "spacesLeft": 10,
+            "spacesLeft": 5,
             "image": "./images/IT.png",
             "subject": "IT",
             "location": "London",
@@ -62,7 +62,7 @@
         },
         {
             "id": 1007,
-            "spacesLeft": 6,
+            "spacesLeft": 5,
             "image": "./images/music.png",
             "subject": "Music",
             "location": "Luton",
@@ -72,7 +72,7 @@
         },
         {
             "id": 1008,
-            "spacesLeft": 10,
+            "spacesLeft": 5,
             "image": "./images/science.png",
             "subject": "Science",
             "location": "London",
@@ -82,7 +82,7 @@
         },
         {
             "id": 1009,
-            "spacesLeft": 10,
+            "spacesLeft": 5,
             "image": "./images/spanish.png",
             "subject": "Spanish",
             "location": "Watford",
@@ -92,7 +92,7 @@
         },
         {
             "id": 1010,
-            "spacesLeft": 10,
+            "spacesLeft": 5,
             "image": "./images/sports.png",
             "subject": "Sports",
             "location": "Liverpool",
@@ -101,4 +101,3 @@
             "rating": 4
         }
     ]
-}
